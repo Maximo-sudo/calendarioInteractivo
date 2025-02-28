@@ -1,0 +1,19 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+/* fondo */
+.fondo {
+    position: absolute;
+    width: 100%;
+    height: 300%; 
+    background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
+}
+
+.image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
