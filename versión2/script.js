@@ -22,14 +22,14 @@
     }, { passive: true });
 
 // movimientoContinuoFiguras
-window.addEventListener('scroll', function() {
-    const figures = document.querySelectorAll('.figure');
-    figures.forEach((figure, index) => {
-        const speed = index + 1;
-        const x = window.scrollY * speed * 0.05;
-        figure.style.transform = `translateY(${x}px) rotate(${x}deg)`;
+    window.addEventListener('scroll', function() {
+        const figures = document.querySelectorAll('.figure');
+        figures.forEach((figure, index) => {
+            const speed = index + 1;
+            const x = window.scrollY * speed * 0.05;
+            figure.style.transform = `translateY(${x}px) rotate(${x}deg)`;
+        });
     });
-});
 
 
 // desplazamientoFiguras
@@ -81,3 +81,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// desactivarSeleccionTexto
+document.addEventListener("selectstart", function(ba) {
+    const selec = document.querySelectorAll('.texto');
+    selec.forEach(texto => {
+        texto.style.querySelectorAll = "none";
+    });
+    ba.preventDefault();
+});
+
