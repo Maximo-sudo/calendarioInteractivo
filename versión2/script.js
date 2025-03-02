@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             figure.style.animation = "float 3s ease-in-out infinite";
             figure.style.transition = "left 0.5s ease, top 0.5s ease";
-            
+
             figure.style.left = `${initialX}%`;
             figure.style.top = `${initialY}%`;
         });
@@ -100,3 +100,26 @@ document.addEventListener("selectstart", function(ba) {
     ba.preventDefault();
 });
 
+// barridoElementos
+let isScrollingDown = false;
+
+const elementos = document.querySelectorAll(".fondo, .image, .figure, .recText");
+
+function desvanecerElementos() {
+    elementos.forEach((elemento, index) => {
+        setTimeout(() => {
+            elemento.style.transition = "opacity 1s ease, transform 1s ease";
+            elemento.style.opacity = "0";
+            elemento.style.transform = "translateY(50px)";
+        }, index * 200);
+    });
+};
+
+window.addEventListener("wheel", function (ar) {
+    if (ar.deltaY > 0) {
+        if (!isScrollingDown) {
+            isScrollingDown = true;
+            desvanecerElementos();
+        }
+    }
+});
