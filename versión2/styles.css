@@ -4,6 +4,7 @@ body, html {
     height: 100%;
     overflow-x: hidden;
 }
+
 /* diseñoFondo */
 .fondo {
     position: absolute;
@@ -25,7 +26,7 @@ body, html {
     background-size: cover;
     background-position: center;
     animation: float 3s ease-in-out infinite;
-    transform: scale(1);
+    transform: translate(0, 0); /* Inicialmente en la posición 0,0 */
 }
 
 #figure1 {
@@ -53,7 +54,7 @@ body, html {
     }
 }
 
-/* diseñoTitulo */
+
 .recText {
     position: absolute;
     top: 50%;
@@ -79,21 +80,3 @@ body, html {
 }
 
 
-
-  
-
-  
-
-
-/* diseñoCalendario */
-/* .calendario {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 500px;
-    border-radius: 5px;
-    overflow: hidden;
-}
- */

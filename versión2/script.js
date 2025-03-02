@@ -40,8 +40,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let initialX, initialY, startX, startY, isDragging = false;
         
         // trasPedirLaConfigInicialaGuardamos
-        initialX = figure.offsetLeft;
-        initialY = figure.offsetTop;
+            /*initialX = figure.offsetLeft;
+            initialY = figure.offsetTop; */
+        // porPorcentajes - adaptacionCualquierPantalla
+        initialX = (figure.offsetLeft / window.innerWidth) * 100;
+        initialY = (figure.offsetTop / window.innerHeight) * 100;
         
         figure.addEventListener("mousedown", function (e) {
             isDragging = true;
@@ -50,17 +53,21 @@ document.addEventListener("DOMContentLoaded", function () {
             
             //paraEvitarLasTransicionesAlArrastrar
             figure.style.transition = "none"; 
+            figure.style.animation = "none";
         });
         
         // detectarLaPulsaciónDelRatón
         document.addEventListener("mousemove", function (e) {
             if (!isDragging) return;
             
-            let newX = e.clientX - startX;
-            let newY = e.clientY - startY;
+            /* let newX = e.clientX - startX;
+            let newY = e.clientY - startY; */
+            let newX = ((e.clientX - startX) / window.innerWidth) * 100;
+            let newY = ((e.clientY - startY) / window.innerHeight) * 100;
             
-            figure.style.left = `${newX}px`;
-            figure.style.top = `${newY}px`;
+            figure.style.left = `${newX}%`;
+            figure.style.top = `${newY}%`;
+            //figure.style.transform = `translate(${newX}px, ${newY}px)`; problema1
         });
         
         // detectarElSoltarElRatón
@@ -68,16 +75,18 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!isDragging) return;
             isDragging = false;
             
+            figure.style.animation = "float 3s ease-in-out infinite";
             figure.style.transition = "left 0.5s ease, top 0.5s ease";
-            figure.style.left = `${initialX}px`;
-            figure.style.top = `${initialY}px`;
+            
+            figure.style.left = `${initialX}%`;
+            figure.style.top = `${initialY}%`;
         });
         
         // detectarDobleClick
         document.addEventListener("dblclick", function() {
             figure.style.transition = "left 0.5s ease, top 0.5s ease";
-            figure.style.left = `${initialX}px`;
-            figure.style.top = `${initialY}px`;
+            figure.style.left = `${initialX}%`;
+            figure.style.top = `${initialY}%`;
         });
     });
 });
