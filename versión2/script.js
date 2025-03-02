@@ -1,18 +1,25 @@
-let bloqueados = ["wheel", "keydown", "keyup"];
+// proibirBajarConLoDelArray
+    let bloqueados = ["wheel", "keydown", "keyup"];
 
-bloqueados.forEach(bloqueados => {
-    document.addEventListener(bloqueados, function (event) {
-        event.preventDefault();
-    }, {passive: false});
-});
+    bloqueados.forEach(bloqueados => {
+        document.addEventListener(bloqueados, function (event) {
+            event.preventDefault();
+        }, {passive: true});
+    });
 
-/* document.addEventListener("keydown", function (event) {
-    event.preventDefault();
-}, {passive: false});
+// proibirZoom con Ctrl + Scroll y Ctrl + (+, -, 0)
+// loTengoActivoDemomento
+    document.addEventListener("wheel", function (event) {
+        if (event.ctrlKey) {
+            event.preventDefault();
+        }
+    }, {passive: true});
 
-document.addEventListener("keyup", function (event) {
-    event.preventDefault();
-}, {passive: false}); */
+    document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && (event.key === "+" || event.key === "-" || event.key === "0")) {
+            event.preventDefault();
+        }
+    }, { passive: true });
 
 // movimientoContinuoFiguras
 window.addEventListener('scroll', function() {
@@ -65,20 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
             figure.style.left = `${initialX}px`;
             figure.style.top = `${initialY}px`;
         });
+        
+        // detectarDobleClick
+        document.addEventListener("dblclick", function() {
+            figure.style.transition = "left 0.5s ease, top 0.5s ease";
+            figure.style.left = `${initialX}px`;
+            figure.style.top = `${initialY}px`;
+        });
     });
 });
-
-
-// deplazamientoRuedaRaton
-// proibirZoom con Ctrl + Scroll y Ctrl + (+, -, 0)
-/* document.addEventListener("wheel", function (event) {
-    if (event.ctrlKey) {
-        event.preventDefault();
-    }
-}, { passive: false });
-
-document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && (event.key === "+" || event.key === "-" || event.key === "0")) {
-        event.preventDefault();
-    }
-}); */
