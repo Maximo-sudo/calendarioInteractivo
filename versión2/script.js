@@ -15,7 +15,13 @@ document.addEventListener("wheel", function (event) {
     event.preventDefault();
     }, {passive: false});
 
+document.addEventListener("keydown", function (event) {
+    event.preventDefault();
+    }, {passive: false});
 
+document.addEventListener("keyup", function (event) {
+    event.preventDefault();
+    }, {passive: false});
 
 // movimientoContinuoFiguras
 window.addEventListener('scroll', function() {
