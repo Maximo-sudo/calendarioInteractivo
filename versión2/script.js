@@ -1,27 +1,18 @@
-// proibirZoom con Ctrl + Scroll y Ctrl + (+, -, 0)
-/* document.addEventListener("wheel", function (event) {
-    if (event.ctrlKey) {
+let bloqueados = ["wheel", "keydown", "keyup"];
+
+bloqueados.forEach(bloqueados => {
+    document.addEventListener(bloqueados, function (event) {
         event.preventDefault();
-    }
-}, { passive: false });
-
-document.addEventListener("keydown", function (event) {
-    if (event.ctrlKey && (event.key === "+" || event.key === "-" || event.key === "0")) {
-        event.preventDefault();
-    }
-}); */
-
-document.addEventListener("wheel", function (event) {
-    event.preventDefault();
     }, {passive: false});
+});
 
-document.addEventListener("keydown", function (event) {
+/* document.addEventListener("keydown", function (event) {
     event.preventDefault();
-    }, {passive: false});
+}, {passive: false});
 
 document.addEventListener("keyup", function (event) {
     event.preventDefault();
-    }, {passive: false});
+}, {passive: false}); */
 
 // movimientoContinuoFiguras
 window.addEventListener('scroll', function() {
@@ -37,14 +28,14 @@ window.addEventListener('scroll', function() {
 // desplazamientoFiguras
 document.addEventListener("DOMContentLoaded", function () {
     const figures = document.querySelectorAll(".figure");
-
+    
     figures.forEach(figure => {
         let initialX, initialY, startX, startY, isDragging = false;
-
+        
         // trasPedirLaConfigInicialaGuardamos
         initialX = figure.offsetLeft;
         initialY = figure.offsetTop;
-
+        
         figure.addEventListener("mousedown", function (e) {
             isDragging = true;
             startX = e.clientX - figure.offsetLeft;
@@ -53,23 +44,23 @@ document.addEventListener("DOMContentLoaded", function () {
             //paraEvitarLasTransicionesAlArrastrar
             figure.style.transition = "none"; 
         });
-
+        
         // detectarLaPulsaciónDelRatón
         document.addEventListener("mousemove", function (e) {
             if (!isDragging) return;
-
+            
             let newX = e.clientX - startX;
             let newY = e.clientY - startY;
-
+            
             figure.style.left = `${newX}px`;
             figure.style.top = `${newY}px`;
         });
-
+        
         // detectarElSoltarElRatón
         document.addEventListener("mouseup", function () {
             if (!isDragging) return;
             isDragging = false;
-
+            
             figure.style.transition = "left 0.5s ease, top 0.5s ease";
             figure.style.left = `${initialX}px`;
             figure.style.top = `${initialY}px`;
@@ -79,3 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // deplazamientoRuedaRaton
+// proibirZoom con Ctrl + Scroll y Ctrl + (+, -, 0)
+/* document.addEventListener("wheel", function (event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+}, { passive: false });
+
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey && (event.key === "+" || event.key === "-" || event.key === "0")) {
+        event.preventDefault();
+    }
+}); */
