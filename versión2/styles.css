@@ -53,7 +53,47 @@ body, html {
     }
 }
 
+/* diseñoTitulo */
+.recText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 750px;
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 3;
+}
+
+.texto {
+    font-family: "Sigmar", serif;
+    font-size: 4.5em;
+    font-weight: 750;
+    color: transparent; 
+    -webkit-text-stroke: 1px #000; 
+    text-align: center;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    z-index: 4;
+    letter-spacing: 0.1em;
+}
 
 
 
+  
 
+  
+
+
+/* diseñoCalendario */
+/* .calendario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+ */
