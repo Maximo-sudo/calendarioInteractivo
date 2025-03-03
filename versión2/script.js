@@ -38,10 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     figures.forEach(figure => {
         let initialX, initialY, startX, startY, isDragging = false;
-        
-        // trasPedirLaConfigInicialaGuardamos
-            /*initialX = figure.offsetLeft;
-            initialY = figure.offsetTop; */
+
         // porPorcentajes - adaptacionCualquierPantalla
         initialX = (figure.offsetLeft / window.innerWidth) * 100;
         initialY = (figure.offsetTop / window.innerHeight) * 100;
@@ -67,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             figure.style.left = `${newX}%`;
             figure.style.top = `${newY}%`;
-            //figure.style.transform = `translate(${newX}px, ${newY}px)`; problema1
+
         });
         
         // detectarElSoltarElRatón
@@ -105,7 +102,7 @@ window.onload = function () {
 };
 
 // barridoElementos
-let isScrollingDown = false;
+
 let lastScrollTop = 0;
 const elementos = document.querySelectorAll(".fondo, .image, .figure, .recText");
 
@@ -114,11 +111,12 @@ function desvanecerElementos() {
     elementos.forEach((elemento, index) => {
         setTimeout(() => {
             elemento.classList.add("desvanecido");
-        }, index * 200);
+        }, index * 120);
     });
 
     setTimeout(() => {
-        document.body.classList.add("cambiar-fondo");
+        document.body.classList.add("apFondo");
+        document.body.classList.remove("desFondo");
     }, elementos.length * 30 + 100);
 };
 
@@ -127,26 +125,24 @@ function reaparecerElementos() {
     elementos.forEach((elemento, index) => {
         setTimeout(() => {
             elemento.classList.remove("desvanecido");
-        }, index);
+        }, index * 120);
 });
 
-    document.body.classList.remove("cambiar-fondo");
-    document.body.style.backgroundColor = "transparent";
+    setTimeout(() => {
+        document.body.classList.add("desFondo");
+        document.body.classList.remove("apFondo");
+    }, elementos.length * 30 + 100);
 };
 
 window.addEventListener("scroll", function () {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     
     if (scrollTop > lastScrollTop) {
-        if (!isScrollingDown) {
-            isScrollingDown = true;
-            desvanecerElementos();
-        }
-    } else {
-        if (isScrollingDown) {
-            isScrollingDown = false;
-            reaparecerElementos();
-        }
+        desvanecerElementos();
+    } else if (scrollTop < lastScrollTop) {
+        reaparecerElementos();
     }
+    
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
+

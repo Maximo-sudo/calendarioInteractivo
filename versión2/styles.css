@@ -10,7 +10,7 @@ body, html {
 .fondo {
     position: absolute;
     width: 100%;
-    height: 300%; 
+    height: 10rem; 
     background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
 }
 
@@ -34,18 +34,17 @@ body, html {
     top: -20%;
     left: 75%;
     background-image: url('recursosImagenes/vector1.png');
-}
-#figure2 {
+} #figure2 {
     top: 48%;
     left: -20%;
     background-image: url('recursosImagenes/vector2.png');
-}
-#figure3 {
+} #figure3 {
     top: 60%;
     left: 80%;
     background-image: url('recursosImagenes/vector3.png');
 }
 
+/* figurasFlotantes */
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -55,6 +54,7 @@ body, html {
     }
 }
 
+/* diseñoTitulo */
 .recText {
     position: absolute;
     top: 50%;
@@ -79,30 +79,82 @@ body, html {
     letter-spacing: 0.1em;
 }
 
-
-/* desvanecimiento */
-@keyframes cambiarFondo {
+/* animacionesDesAp */
+@keyframes girar {
     0% {
-        background-color: transparent;
-        /* background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%); */
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-5deg);
     }
     100% {
-        /* background-color: #000; */
-        position: relative;
-        background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
+        transform: rotate(0deg);
     }
 }
 
-.fondo, .image, .figure, .recText {
-    transition: opacity 2s ease, transform 1s ease;
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) rotate(-5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
 }
-body.cambiar-fondo {
-    transition: background-color 2s ease forwards;
-    animation: cambiarFondo 0.3s ease 2.5s forwards;
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9) rotate(5deg);
+    }
 }
 
 .desvanecido {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 3s ease, transform 3s ease; 
+}
+
+.desvanecido.texto {
+    transform: translateY(50px -50px);
+    transform: scale(0.9) rotate(-5deg);
+    animation: fadeOut 2s ease forwards;
+}
+
+.desvanecido.figure {
+    transform: scale(0.9) rotate(5deg);
+    animation: fadeOut 0.1s ease forwards;
+    animation: girar 2s ease-in-out infinite;
+}
+
+.reaparecido {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1s ease, transform 1s ease; 
+}
+
+.reaparecido.figure {
+    animation: girar 2s ease-in-out infinite;
+}
+
+.apFondo {
+    background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
+    transition: background-color 5s ease;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.desFondo {
+    background-color: transparent;
+    transition: background-color 2s ease;
 }
