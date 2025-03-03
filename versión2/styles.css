@@ -3,13 +3,14 @@ body, html {
     padding: 0;
     height: 100%;
     overflow-x: hidden;
+    transition: background-color 2s ease;
 }
 
 /* diseñoFondo */
 .fondo {
     position: absolute;
     width: 100%;
-    height: 400%; 
+    height: 300%; 
     background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
 }
 
@@ -45,10 +46,6 @@ body, html {
     background-image: url('recursosImagenes/vector3.png');
 }
 
-
-
-
-
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -57,7 +54,6 @@ body, html {
         transform: translateY(-20px);
     }
 }
-
 
 .recText {
     position: absolute;
@@ -83,8 +79,24 @@ body, html {
     letter-spacing: 0.1em;
 }
 
+@keyframes cambiarFondo {
+    0% {
+        background-color: transparent;
+        /* background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%); */
+    }
+    100% {
+        /* background-color: #000; */
+        position: relative;
+        background: linear-gradient(140.19deg, #E8E3DD 8.43%, rgba(205, 201, 198, 0.98) 22.09%, rgba(216, 214, 215, 0.99) 28.81%, #CFCFD7 43.74%, #C4C8D3 53.99%, #A1A3B0 67.08%, #9493A6 73.81%);
+    }
+}
+
 .fondo, .image, .figure, .recText {
-    transition: opacity 1s ease, transform 1s ease;
+    transition: opacity 2s ease, transform 1s ease;
+}
+body.cambiar-fondo {
+    transition: background-color 2s ease forwards;
+    animation: cambiarFondo 0.3s ease 2.5s forwards;
 }
 
 .desvanecido {

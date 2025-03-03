@@ -102,7 +102,6 @@ document.addEventListener("selectstart", function(ba) {
 
 // barridoElementos
 let isScrollingDown = false;
-
 const elementos = document.querySelectorAll(".fondo, .image, .figure, .recText");
 
 function desvanecerElementos() {
@@ -111,6 +110,10 @@ function desvanecerElementos() {
             elemento.classList.add("desvanecido");
         }, index * 200);
     });
+
+    setTimeout(() => {
+        document.body.classList.add("cambiar-fondo");
+    }, elementos.length * 30 + 100);
 };
 
 window.addEventListener("wheel", function (ar) {
