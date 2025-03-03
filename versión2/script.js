@@ -99,11 +99,17 @@ document.addEventListener("selectstart", function(ba) {
     });
     ba.preventDefault();
 });
+// recargaContadorVueltas
+window.onload = function () {
+    window.scrollTo(0, 0);
+};
 
 // barridoElementos
 let isScrollingDown = false;
+let lastScrollTop = 0;
 const elementos = document.querySelectorAll(".fondo, .image, .figure, .recText");
 
+// devanecerElementos
 function desvanecerElementos() {
     elementos.forEach((elemento, index) => {
         setTimeout(() => {
@@ -116,11 +122,31 @@ function desvanecerElementos() {
     }, elementos.length * 30 + 100);
 };
 
-window.addEventListener("wheel", function (ar) {
-    if (ar.deltaY > 0) {
+// aparecerElementos
+function reaparecerElementos() {
+    elementos.forEach((elemento, index) => {
+        setTimeout(() => {
+            elemento.classList.remove("desvanecido");
+        }, index);
+});
+
+    document.body.classList.remove("cambiar-fondo");
+    document.body.style.backgroundColor = "transparent";
+};
+
+window.addEventListener("scroll", function () {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop) {
         if (!isScrollingDown) {
             isScrollingDown = true;
             desvanecerElementos();
         }
+    } else {
+        if (isScrollingDown) {
+            isScrollingDown = false;
+            reaparecerElementos();
+        }
     }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });

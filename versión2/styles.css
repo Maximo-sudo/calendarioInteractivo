@@ -79,6 +79,8 @@ body, html {
     letter-spacing: 0.1em;
 }
 
+
+/* desvanecimiento */
 @keyframes cambiarFondo {
     0% {
         background-color: transparent;
