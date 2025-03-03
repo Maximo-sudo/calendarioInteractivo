@@ -45,6 +45,10 @@ body, html {
     background-image: url('recursosImagenes/vector3.png');
 }
 
+
+
+
+
 @keyframes float {
     0%, 100% {
         transform: translateY(0);
@@ -83,3 +87,8 @@ body, html {
     transition: opacity 1s ease, transform 1s ease;
 }
 
+.desvanecido {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}

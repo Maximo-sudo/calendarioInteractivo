@@ -108,9 +108,7 @@ const elementos = document.querySelectorAll(".fondo, .image, .figure, .recText")
 function desvanecerElementos() {
     elementos.forEach((elemento, index) => {
         setTimeout(() => {
-            elemento.style.transition = "opacity 1s ease, transform 1s ease";
-            elemento.style.opacity = "0";
-            elemento.style.transform = "translateY(50px)";
+            elemento.classList.add("desvanecido");
         }, index * 200);
     });
 };
