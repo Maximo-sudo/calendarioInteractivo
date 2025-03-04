@@ -1,0 +1,85 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    line-height: 1.15;
+    /* -webkit-text-size-adjust: 100%; */
+    display: block;
+}
+
+/* diseñoCalendarioContenedor */
+.calendario {
+    background: linear-gradient(90deg, #8c9bc0, #808ba8, #8c9bc0);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    width: 100%;
+}
+
+/* diseñoCalendarioEstructura */
+.container {
+    width: 100%;
+    max-width: 75rem;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+/* diseñoCalendarioEncabezado */
+.calendario-info {
+    background: linear-gradient(147deg, #5da8f9, #5199e6, #4a8dd3);
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+    /* letras */
+    .calendario-info .info {
+        flex: 0 0 auto;
+        text-align: center;
+    }
+    
+    /* flechas */
+    .calendario-info #antes, .calendario-info #despues {
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+/* configuraciónLista */
+.lista-dias ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: #000000;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(33, 33, 33, 0.8);
+    text-transform: uppercase;
+}
+
+.lista-dias ul li {
+    flex: 1;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.285);
+}
+
+/* aparienciaAdicional */
+.contenedor-dias {
+    padding: 20px 0;
+}
+
+.lista-dias ul li:not(:last-child) {
+    margin-right: 5px;
+}
